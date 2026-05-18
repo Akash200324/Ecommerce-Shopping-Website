@@ -1,0 +1,601 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nike Style Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, san-serif;
+        }
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #000;
+            color: white;
+        }
+
+        /* Navbar */
+        .top-nav {
+            width: 100%;
+            height: 40px;
+            background-color: #D9D9D9;
+            display: flex;
+        }
+        .navbar {
+            display: flex;
+            height: 100px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 500;
+        }
+
+        .logo img {
+            width: 120px;
+            height: auto;
+            z-index: 2000;
+
+        }
+
+       .nav-center {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+       }
+
+       .nav-center li a {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        position: relative;
+      }
+      .nav-center li a::center {
+        content= "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: black;
+        left: 0;
+        bottom: -5px;
+        transition: 0.3s;
+       }
+
+       .nav-center lia a:hover::after {
+        width: 100%;
+       }
+
+       .search-box {
+        display: flex;
+        align-item: right;
+        background:  #D9D9D9;
+        padding: 8px 10px;
+        border-radius: 50px;
+        width: 200px;
+        transition: 0.3s;
+        border: 1px solid transparent;
+       }
+
+       .search-box i {
+        color: #aaa;
+        font-size: 14px;
+        margin-right: 10px;
+       }
+
+       .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            width: 100%;
+            font-size: 14px;
+       }
+
+       .search-box input::placeholder {
+            color; #777;
+        }
+
+        .search-box:hover {
+         border: 1px solid #555;
+         background: #222;
+       }
+
+       .search-box:focus-within {
+        border: 11px solid #fff;
+        background: #222;
+       }
+
+        .bottom-nav {
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+            color: black;
+            font-style: medium;
+            background-color: #D9D9D9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+
+        /* Hero Section */
+        .hero {
+            font-family: Grenze;
+            height: 90vh;
+            padding: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .hero-text span {
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            margin: 20px 0;
+            color: #ccc;
+        }
+
+
+
+
+
+        .btn {
+            padding: 12px 30px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover{
+            color: white;
+            background: red;
+            transform: scale(1.05);
+        }
+
+
+        .hero-image {
+            position: relative;
+        }
+
+        .shoe {
+            width: 500px;
+            transform: rotate(8deg);
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+            animation: float 3s ease-in-out infinite;
+        }
+
+         .glow {
+            position: absolute;
+            border-radius: 50%;
+            background: #ff3c3c;
+         }
+
+         .glow1 {
+            width:  500px;
+            height: 500px;
+            filter: blur(200px);
+            opacity: 0.4;
+            top: 0;
+            left: 0;
+         }
+
+         .glow2 {
+            width: 250px;
+            height: 250px;
+            filter: blur(120px);
+            opacity: 0.2;
+            top: 100px;
+            left: 150px;
+         }
+         .glow1, .glow2{
+          animation: pulse 4s infinite alternate;
+         }
+
+        .arrow{
+            position: absolute;
+            top: 55%;
+            transform: translateY(-50%);
+            font-size: 28px;
+            cursor: pointer;
+            color: white;
+
+            padding: 10px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+
+
+        }
+        .left{
+            left: 20px;
+
+        }
+        .arrow:hover{
+            color: black;
+            background: white;
+
+        }
+        .right{
+            right:20px;
+
+        }
+        .dots{
+            margin-top: 20px;
+            text-align: center;
+
+        }
+        .dot{
+            height: 10px;
+            width: 10px;
+            background: grey;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 5px;
+        }
+        .dot.active{
+            background: white;
+         }
+
+         .product {
+            padding: 60px 80px;
+            position: relative;
+         }
+
+
+
+
+       .product h2{
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .product-containers {
+            display: flex;
+            gap: 20px;
+            flex: wrap;
+            transition: 0.5s ease;
+            overflow-x: auto;   /* ✅ KEY FIX */
+            scroll-behavior: smooth;
+
+        }
+
+        .product-containers::-webkit-scrollbar {
+           display: none; /* hide scrollbar */
+        }
+
+        .cards {
+            position: relative;
+            display: inline-block;
+            display: absolute;
+            background: #111;
+            padding: 15px;
+            border-radius: 12px;
+            flex: 1 1 calc(33.333% - 20px);
+            flex-direction: column;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+       .cards img {
+            width: 100%;
+            height: 500px;
+            display: block;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .cards .text {
+          position: absolute;
+          bottom: 90px;   /* adjust spacing above button */
+          left: 20%;
+          transform: translateX(-50%);
+          font-style: italic;
+          font-weight: bold;
+          font-size: 30px;   /* adjust as needed */
+          color: white;
+          text-shadow: 5px 5px 8px rgba(0,0,0,1); /* makes text stand out */
+        }
+
+       .cards h3 {
+            position: flex;
+            transform: translateX(18%);
+            font-size: 30px;
+            margin-bottom: 5px;
+
+
+        }
+
+        .cards p {
+            font-size: 18px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .cards:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(255,0,0,0.2);
+        }
+
+        .cards .btn {
+            width: 100px;
+            border-radius: 20px;
+            padding: 5px;
+            font-size: 18px;
+            bottom: 10px;
+
+        }
+
+
+        .slider{
+                overflow: hidden;
+                width: 100%;
+                margin: auto;
+        }
+
+        .hero {
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        .shoe {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .glow {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 0.3; }
+            to { transform: scale(1.2); opacity: 0.6; }
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(80px) rotate(8deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotate(8deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.4; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(8deg); }
+            50% { transform: translateY(-20px) rotate(8deg); }
+            100% { transform: translateY(0) rotate(8deg); }
+        }
+        @keyframes glowPulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.3; }
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="top-nav"></div>
+    <div class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <img src="{% static 'images/nikelogo.png' %}" alt="">
+            </div>
+        </div>
+           <ul class="nav-center">
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Sale</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <div class="search-box">
+                    <i class="fas das-search"></i>
+                    <input type="text" placeholder="search...">
+
+                </div>
+            </div>
+    </div>
+    <div class="bottom-nav">Enjoy 10% off on Nike App. Use: APP10</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+    <div class="hero-text">
+        <h1>
+            STEP INTO STYLE<br>
+            <span>STYLE</span>
+        </h1>
+        <p>Discover the latest collection designed for performance and style.</p>
+        <button class="btn">Shop Now</button>
+    </div>
+    <div class="hero-image">
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+        <img src="{% static 'images/nike-shoe.png' %}" class="shoe">
+    </div>
+    </section>
+    <!--  product Section -->
+
+    <section class="product">
+        <h2>Featured product</h2>
+         <div class="arrow left" onclick="slideLeft(this)">&#10094;</div>
+        <div class="arrow right" onclick="slideRight(this)">&#10095;</div>
+        <div class="product-containers slider">
+            <div class="cards">
+                <img src="{% static 'images/nikestyle1.avif' %}" alt="">
+                <div class="text">Steet Flex </div>
+                <a href="{% url 'street_flex' %}">
+                    <button class="btn">Shop</button>
+                </a>
+            </div>
+            <div class="cards">
+                <img src="{% static 'images/nikestyle2.jpg' %}" alt="">
+                <div class="text">Simple Swag </div>
+               <a href="{% url 'simple_swag' %}">
+                    <button class="btn">Shop</button>
+                </a>
+            </div>
+            <div class="cards">
+                <img src="{% static 'images/nikestyle3.webp' %}" alt="">
+                <div class="text">Fit Gear</div>
+               <a href="{% url 'fit_gear' %}">
+                    <button class="btn">Shop</button>
+                </a>
+            </div>
+        </div>
+        <div class="dots">
+                <span class="dot"></span>
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+       <h2>Trending</h2>
+        <div class="arrow left" onclick="slideLeft(this)">&#10094;</div>
+        <div class="arrow right" onclick="slideRight(this)">&#10095;</div>
+        <div class="product-containers slider">
+            <div class="cards">
+                <a href="/category/street-flex/" class="category-card"></a>
+                <img src="{% static 'images/trending1.jpg' %}" alt="">
+                 <div class="text">
+                   <p> Summer Must-Haves</p>
+                    <h3>Own Your Summer</h3>
+                </div>
+                <button class="btn">Shop</button>
+            </div>
+            <div class="cards">
+                <img src="{% static 'images/trending2.avif' %}" alt="">
+                <div class="text">
+                   <p> Cushion Comfort</p>
+                    <h3>Vomero 18</h3>
+                </div>
+                <button class="btn">Shop</button>
+            </div>
+            <div class="cards">
+                <img src="{% static 'images/trending3.jpg' %}" alt="">
+                 <div class="text">
+                   <p>Nike Air Max</p>
+                    <h3>Above the Influence</h3>
+                </div>
+                <button class="btn">Shop</button>
+            </div>
+        </div>
+        <div class="dots">
+                <span class="dot"></span>
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+
+        <h2>Shop By Sports</h2>
+        <div class="arrow left" onclick="slideLeft(this)">&#10094;</div>
+        <div class="arrow right" onclick="slideRight(this)">&#10095;</div>
+        <div class="product-containers slider">
+            <div class="cards">
+                <img src="{% static 'images/sports1.avif' %}" alt="">
+                 <div class="text">Running</div>
+                <button class="btn">Shop</button>
+            </div>
+            <div class="cards">
+                <img src="{% static 'images/sports2.avif' %}" alt="">
+               <div class="text">Training</div>
+                <button class="btn">Shop</button>
+            </div>
+            <div class="cards">
+                <img src="{% static 'images/sports3.jpeg' %}" alt="">
+                 <div class="text">Sportswear</div>
+                <button class="btn">Shop</button>
+            </div>
+            <div class="cards">
+                <img src="{% static 'images/sports4.jpg' %}" alt="">
+                <div class="text">Football</div>
+                <button class="btn">Shop</button>
+            </div>
+        </div>
+        <div class="dots">
+                <span class="dot"></span>
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+    </section>
+
+
+
+<script>
+function slideRight(btn) {
+    let container = btn.parentElement.querySelector(".slider");
+    let cards = container.querySelectorAll(".cards");
+
+    let cardWidth = cards[0].offsetWidth + 20;
+
+    container.scrollBy({
+        left: cardWidth,
+        behavior: "smooth"
+    });
+}
+
+function slideLeft(btn) {
+    let container = btn.parentElement.querySelector(".slider");
+    let cards = container.querySelectorAll(".cards");
+
+    let cardWidth = cards[0].offsetWidth + 20;
+
+    container.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth"
+    });
+}
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+
+</html>
